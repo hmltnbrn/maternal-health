@@ -1,0 +1,306 @@
+@font-face {
+  font-family: InterfaceRegular;
+  src: url('/fonts/interface/InterFace_Rg.ttf');
+}
+
+@font-face {
+  font-family: InterfaceBold;
+  src: url('/fonts/interface/InterFace_Bd.ttf');
+}
+
+@font-face {
+  font-family: BerlingskeSerifTextExtrabold;
+  src: url('/fonts/berlingske/BerlingskeSerifText-Extrabold.otf');
+}
+
+/* * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: InterfaceRegular;
+  line-height: normal;
+}
+
+p {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+.color-comp {
+  color: #49bdba;
+}
+
+.color-partial {
+  color: #93d7d6;
+}
+
+.color-none {
+  color: #595d67;
+}
+
+.body-container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+.selection-container {
+  display: none;
+}
+
+.selection-container h2 {
+  color: #49bdba;
+  font-family: InterfaceBold;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.styled-select select {
+  font-family: InterfaceBold;
+  background: #e6e7e9;
+  padding: 10px 15px;
+  font-size: 20px;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  height: 50px;
+  color: #5a5e67;
+  margin: 20px 0 10px 0;
+  width: 100%;
+}
+
+.graph-top-container {
+  display: flex;
+}
+
+.state-info-container {
+  padding: 10px;
+  margin: 20px;
+}
+
+.state-info-container h2 {
+  color: #595d67;
+  font-size: 30px;
+  font-family: BerlingskeSerifTextExtrabold;
+}
+
+.initial-main-text {
+  margin-top: 15px;
+  color: #49bdba;
+  font-family: InterfaceBold;
+}
+
+.billing-type {
+  display: none;
+  margin: 5px 0;
+  font-size: 17px;
+  font-family: InterfaceBold;
+}
+
+.full-state-info {
+  display: none;
+}
+
+.full-state-info h4 {
+  margin-top: 20px;
+  color: #6e7175;
+  font-family: InterfaceBold;
+}
+
+.full-state-info ul.main-text {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.full-state-info ul.main-text li {
+  display: flex;
+  margin-bottom: 8px;
+  padding-left: 0;
+}
+
+.full-state-info ul.main-text li:before {
+  font-size: 100%;
+  padding-right: 5px;
+  position: unset;
+  color: #000000;
+}
+
+.full-state-info ul.main-text li.non-bulleted:before {
+  content: "\2014";
+  padding-left: 15px;
+}
+
+.full-state-info ul.main-text li.bulleted:before {
+  content: "\2022";
+}
+
+.full-state-info .horiz-rule {
+  background-color: #5A5E68;
+  height: 1px;
+  width: 100%;
+}
+
+path:hover {
+  cursor: pointer;
+}
+
+.state-legend {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.notes-container {
+  display: none;
+}
+
+.notes-container .horiz-rule {
+  background-color: #5A5E68;
+  height: 1px;
+  width: 100%;
+}
+
+.inner-notes {
+  padding: 20px 0;
+}
+
+.inner-notes h2 {
+  font-family: BerlingskeSerifTextExtrabold;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #595d67;
+}
+
+.inner-notes p {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .state-info-container {
+    margin: 0;
+  }
+  .state-legend {
+    height: 100px;
+  }
+} */
+
+/* New */
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+  font-family: InterfaceRegular;
+  /* background-color: #fafafa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; */
+}
+
+h1, h2, h3, h4, h5 {
+  /* font-weight: 400; */
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a:link,
+a:visited,
+a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.body-container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 20px;
+}
+
+.map-top-container {
+  display: flex;
+  width: 100%;
+}
+
+.map-container {
+  width: 60%;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  padding: 20px 10px;
+}
+
+h2.state-name {
+  font-family: InterfaceBold;
+  color: #f47a24;
+}
+
+.styled-select {
+  margin: 20px 0 10px 0;
+}
+
+.styled-select select {
+  font-family: InterfaceBold;
+  background: #5a5e67;
+  padding: 5px 10px;
+  font-size: 17px;
+  line-height: 1;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  height: 35px;
+  color: #ececed;
+  width: 100%;
+}
+
+.styled-select optgroup {
+  background: #878990;
+}
+
+.styled-select option {
+  background: #878990;
+  color: #e7e8e9;
+  font-family: InterfaceRegular;
+}
+
+.default-text {
+  font-family: InterfaceBold;
+  color: #5a5e67;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+
+.state-container {
+  fill: none;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}

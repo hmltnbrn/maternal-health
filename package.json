@@ -1,0 +1,30 @@
+{
+  "name": "maternal-health",
+  "version": "1.0.0",
+  "description": "Maternal Health Policy Map",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "node server",
+    "babel": "./node_modules/.bin/babel ./script.js --out-dir lib",
+    "postcss": "postcss styles.css --dir lib"
+  },
+  "author": "Brian Hamilton",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-arrow-functions": "^7.10.4",
+    "@babel/plugin-transform-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.6",
+    "babel-plugin-transform-es2015-template-literals": "^6.22.0",
+    "postcss-cli": "^7.1.1"
+  }
+}
