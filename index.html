@@ -9,147 +9,82 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <!-- <div class="body-container">
-    <div class="selection-container">
-      <div class="styled-select">
-        <select id="state-selector">
-          <option value="default" selected>Select a state</option>
-          <option value="Alabama">Alabama</option>
-          <option value="Alaska">Alaska</option>
-          <option value="Arizona">Arizona</option>
-          <option value="Arkansas">Arkansas</option>
-          <option value="California">California</option>
-          <option value="Colorado">Colorado</option>
-          <option value="Connecticut">Connecticut</option>
-          <option value="Delaware">Delaware</option>
-          <option value="Florida">Florida</option>
-          <option value="Georgia">Georgia</option>
-          <option value="Hawaii">Hawaii</option>
-          <option value="Idaho">Idaho</option>
-          <option value="Illinois">Illinois</option>
-          <option value="Indiana">Indiana</option>
-          <option value="Iowa">Iowa</option>
-          <option value="Kansas">Kansas</option>
-          <option value="Kentucky">Kentucky</option>
-          <option value="Louisiana">Louisiana</option>
-          <option value="Maine">Maine</option>
-          <option value="Maryland">Maryland</option>
-          <option value="Massachusetts">Massachusetts</option>
-          <option value="Michigan">Michigan</option>
-          <option value="Minnesota">Minnesota</option>
-          <option value="Mississippi">Mississippi</option>
-          <option value="Missouri">Missouri</option>
-          <option value="Montana">Montana</option>
-          <option value="Nebraska">Nebraska</option>
-          <option value="Nevada">Nevada</option>
-          <option value="New Hampshire">New Hampshire</option>
-          <option value="New Jersey">New Jersey</option>
-          <option value="New Mexico">New Mexico</option>
-          <option value="New York">New York</option>
-          <option value="North Carolina">North Carolina</option>
-          <option value="North Dakota">North Dakota</option>
-          <option value="Ohio">Ohio</option>
-          <option value="Oklahoma">Oklahoma</option>
-          <option value="Oregon">Oregon</option>
-          <option value="Pennsylvania">Pennsylvania</option>
-          <option value="Rhode Island">Rhode Island</option>
-          <option value="South Carolina">South Carolina</option>
-          <option value="South Dakota">South Dakota</option>
-          <option value="Tennessee">Tennessee</option>
-          <option value="Texas">Texas</option>
-          <option value="Utah">Utah</option>
-          <option value="Vermont">Vermont</option>
-          <option value="Virginia">Virginia</option>
-          <option value="Washington">Washington</option>
-          <option value="West Virginia">West Virginia</option>
-          <option value="Wisconsin">Wisconsin</option>
-          <option value="Wyoming">Wyoming</option>
-        </select>
-      </div>
-      <h2 class="mobile-select-header">Select a state to learn how it protects consumers against balance billing</h2>
-    </div>
-    <div class="graph-top-container">
-      <div class="graph-container">
-        <div id="state-chart"></div>
-        <div class="state-legend"></div>
-      </div>
-      <div class="state-info-container">
-        <h2 class="state-name">Select a state</h2>
-        <p class="initial-main-text">Click on a state to learn how it protects consumers against balance billing</p>
-        <h3 class="billing-type"></h3>
-        <div class="full-state-info">
-          <div class="horiz-rule"></div>
-          <h4>PROTECTIONS AVAILABLE</h4>
-          <ul class="main-text"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="notes-container">
-      <div class="horiz-rule"></div>
-      <div class="inner-notes">
-        <h2>NOTES</h2>
-        <div class="the-notes"></div>
-      </div>
-    </div>
-  </div> -->
   <div class="body-container">
     <div class="map-top-container">
       <div class="map-container">
         <div id="state-chart"></div>
-        <div class="state-legend"></div>
+        <div id="legend-container"></div>
       </div>
       <div class="detail-container">
         <h2 class="state-name">United States</h2>
-        <!-- <div class="selection-container"> -->
-          <div class="styled-select">
-            <select id="health-selector">
-              <option value="default" selected>Select a Maternal Health Equity Measure</option>
-              <optgroup label="Coverage and Benefit">
-                <option value="COVID-19 Telehealth Benefits">COVID-19 Telehealth Benefits</option>
-                <option value="Post Partum Coverage">Post Partum Coverage</option>
-                <option value="Home Visiting Services">Home Visiting Services</option>
-                <option value="Free Standing Birth Centers">Free Standing Birth Centers</option>
-                <option value="Doula Services">Doula Services</option>
-                <option value="Midwifery Services">Midwifery Services</option>
-                <option value="Immigrant 5-year Waiver">Immigrant 5-year Waiver</option>
-                <option value="Telemedicine for Pregnancy Care">Telemedicine for Pregnancy Care</option>
-                <option value="Presumptive Eligibility">Presumptive Eligibility</option>
-                <option value="Targeted Subpopulations">Targeted Subpopulations</option>
-                <option value="Education to Beneficiaries">Education to Beneficiaries</option>
-              </optgroup>
-              <optgroup label="Care Delivery Transmission">
-                <option value="Models of Care Delivery">Models of Care Delivery</option>
-                <option value="Monetary Incentives for Beneficiaries">Monetary Incentives for Beneficiaries</optin>
-                <option value="Payment Reform">Payment Reform</option>
-                <option value="Substance Use Programs">Substance Use Programs</option>
-                <option value="Integrating Mental Health">Integrating Mental Health</option>
-                <option value="Provider Bias Training">Provider Bias Training</option>
-                <option value="Enhancing Obstetric Workforce">Enhancing Obstetric Workforce</option>
-                <option value="Quality Improvement Programs">Quality Improvement Programs</option>
-              </optgroup>
-              <optgroup label="Data and Oversight">
-                <option value="Advisory Councils">Advisory Councils</option>
-                <option value="Maternal Mortality Review Committe">Maternal Mortality Review Committee</option>
-                <option value="Race Stratified Data">Race Stratified Data</option>
-                <option value="Maternal Health Research">Maternal Health Research</option>
-                <option value="Enhancing Data Collection">Enhancing Data Collection</option>
-                <option value="Recognition Resolutions">Recognition Resolutions</option>
-              </optgroup>
-            </select>
+        <div class="styled-select">
+          <select id="health-selector">
+            <option value="default" selected>Select a Maternal Health Equity Measure</option>
+            <optgroup label="Coverage and Benefit">
+              <option value="COVID-19 Telehealth Benefits">COVID-19 Telehealth Benefits</option>
+              <option value="Postpartum Coverage">Postpartum Coverage</option>
+              <option value="Home Visiting Services">Home Visiting Services</option>
+              <option value="Freestanding Birth Centers">Freestanding Birth Centers</option>
+              <option value="Doula Services">Doula Services</option>
+              <option value="Midwifery Services">Midwifery Services</option>
+              <option value="Immigrant 5-year Waiver">Immigrant 5-year Waiver</option>
+              <option value="Telemedicine for Pregnancy Care">Telemedicine for Pregnancy Care</option>
+              <option value="Presumptive Eligibility">Presumptive Eligibility</option>
+              <option value="Targeted Subpopulations">Targeted Subpopulations</option>
+              <option value="Education to Beneficiaries">Education to Beneficiaries</option>
+            </optgroup>
+            <optgroup label="Care Delivery Transmission">
+              <option value="Models of Care Delivery">Models of Care Delivery</option>
+              <option value="Monetary Incentives for Beneficiaries">Monetary Incentives for Beneficiaries</optin>
+              <option value="Payment Reform">Payment Reform</option>
+              <option value="Substance Use Programs">Substance Use Programs</option>
+              <option value="Integrating Mental Health">Integrating Mental Health</option>
+              <option value="Provider Bias Training">Provider Bias Training</option>
+              <option value="Enhancing Obstetric Workforce">Enhancing Obstetric Workforce</option>
+              <option value="Quality Improvement Programs">Quality Improvement Programs</option>
+            </optgroup>
+            <optgroup label="Data and Oversight">
+              <option value="Advisory Councils">Advisory Councils</option>
+              <option value="Maternal Mortality Review Committee">Maternal Mortality Review Committee</option>
+              <option value="Race Stratified Data">Race Stratified Data</option>
+              <option value="Maternal Health Research">Maternal Health Research</option>
+              <option value="Enhancing Data Collection">Enhancing Data Collection</option>
+              <option value="Recognition Resolutions">Recognition Resolutions</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="information-container">
+          <p class="information-level default-no-action">Select a state on the map and an action above to learn what the state is doing to improve maternal health outcomes and reduce racial maternal health disparities.</p>
+          <p class="information-level policy-description hide-initial"></p>
+          <p class="information-level default-no-state hide-initial">Select a state on the map for more details.</p>
+          <div class="information-level policy-values hide-initial">
           </div>
-          <p class="default-text">Select a state on the map and an action above to learn what the state is doing to improve maternal health outcomes and reduce racial maternal health disparities.</p>
-        <!-- </div> -->
+          <div class="information-level policy-effective hide-initial">
+            <h4>Effective Date</h4>
+            <p class="effective-date"></p>
+          </div>
+          <div class="information-level policy-additional hide-initial">
+            <h4>Additional Information</h4>
+            <p class="additional-info"></p>
+          </div>
+          <div class="information-level payment-reform hide-initial">
+            <p><span class="payment-reform-state"></span> has adopted the following payment reforms:</p>
+            <ul class="payment-reform-list"></ul>
+          </div>
+        </div>
       </div>
     </div>
-    
-    <!-- <div>
-      <section>
-        <div id="state-chart"></div>
-      </section>
-    </div> -->
+    <div class="notes-container hide-initial">
+      <div class="horiz-rule"></div>
+      <div class="inner-notes">
+        <h4>Notes:</h4>
+        <div class="the-notes"></div>
+      </div>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.2.5/polyfill.min.js"></script>
   <script src="https://unpkg.com/@ungap/url-search-params@0.1.2/min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
   <script type="text/javascript">
     (function () {
       if (window.NodeList && !NodeList.prototype.forEach) {
@@ -166,10 +101,8 @@
       window.CustomEvent = CustomEvent;
     })();
   </script>
-  <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://unpkg.com/topojson@3"></script>
-  <!-- <script src="https://d3js.org/d3-queue.v3.min.js"></script> -->
   <script type="text/javascript" src="./script.js"></script>
   <!-- <script type="text/javascript" src="./lib/script.js"></script> -->
 </body>
