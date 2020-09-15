@@ -116,6 +116,25 @@
     .attr("dy", ".35em")
     .text("DC");
 
+  window.onclick = function(event) {
+    let isDetail = false;
+    for(var i=0;i<event.path.length;i++) {
+      if(event.path[i].className === 'detail-container') {
+        isDetail = true;
+        break;
+      }
+    }
+    const currentTag = event.target.tagName;
+    if(currentTag !== 'path' && currentTag !== 'rect' && currentTag !== 'SELECT' && !isDetail) {
+      selectedPolicy = 'default';
+      selectedState = false;
+      d3.select("#health-selector").selectAll("option").attr("selected", null);
+      d3.select("#health-selector").select("option[value='default']").attr("selected", true);
+      createMap(usMap, stateActions, 'default');
+      setTextBoxes();
+    }
+  }
+
   const promises = [
     d3.json("https://d3js.org/us-10m.v1.json"),
     d3.json("https://script.google.com/macros/s/AKfycbztXNRRF5eMOTeYlS6JNDf2DQlqD5rOho6hiECD9sVGMrQnDeA/exec?id=1nik6jVxBoGdvrOtfnbCgfiXejeYdBMYQWCjTKbYwZwo"),
@@ -296,19 +315,19 @@
         .style("alignment-baseline", "middle");
 
     function handleClick(d) {
-      svg.selectAll("path")
-        .style("fill-opacity", function(d) {
-          return 0.3;
-        });
-      d3.select(".dc-rect")
-        .style("fill-opacity", function(d) {
-          return 0.3;
-        });
-      d3.select(this)
-        .style("fill-opacity", function(d) {
-          return 1;
-        });
       if(type !== 'default') {
+        svg.selectAll("path")
+          .attr("fill-opacity", function(d) {
+            return 0.3;
+          });
+        d3.select(".dc-rect")
+          .attr("fill-opacity", function(d) {
+            return 0.3;
+          });
+        d3.select(this)
+          .attr("fill-opacity", function(d) {
+            return 1;
+          });
         selectedState = d.state;
         setTextBoxes();
       }
@@ -390,6 +409,7 @@
     d3.selectAll(".notes-container").hide();
     if(selectedPolicy === 'default') {
       d3.select(".default-no-action").showFlex();
+      d3.select('.state-name').text("United States");
     }
     else {
       d3.select(".policy-description")
