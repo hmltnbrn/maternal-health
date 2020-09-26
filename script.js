@@ -116,6 +116,8 @@
     .attr("dy", ".35em")
     .text("DC");
 
+  d3.select(".body-container").hide();
+
   window.onclick = function(event) {
     let isDetail = false;
     for(var i=0;i<event.path.length;i++) {
@@ -152,12 +154,15 @@
 
   selection.addEventListener("change", function(e) {
     selectedPolicy = e.target.value;
-    createMap(usMap, allData.get(selectedPolicy), selectedPolicy);
+    if(selectedPolicy === 'default') {
+      selectedState = false;
+    }
+    createMap(usMap, selectedPolicy === 'default' ? stateActions : allData.get(selectedPolicy), selectedPolicy);
     setTextBoxes();
   });
   
   function createAll([us, fullData]) {
-    // console.log(fullData)
+    console.log(fullData)
     usMap = us;
     fullData["State by State Comparison"].forEach(d => {
       stateActions.set(d["State"].trim(), {
@@ -181,10 +186,12 @@
         allData.set(key.trim(), stateMap);
       }
     }
-    // console.log(stateActions)
-    // console.log(policyDesc)
-    // console.log(allData)
+    console.log(stateActions)
+    console.log(policyDesc)
+    console.log(allData)
     createMap(us, stateActions, 'default');
+    d3.select(".body-container").showFlex();
+    d3.select(".loading-container").hide();
   }
   
   function createMap(us, map, type) {
