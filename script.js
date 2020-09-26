@@ -116,7 +116,7 @@
     .attr("dy", ".35em")
     .text("DC");
 
-  d3.select(".body-container").hide();
+  // d3.select(".body-container").hide();
 
   window.onclick = function(event) {
     let isDetail = false;
@@ -427,13 +427,22 @@
         if(selectedPolicy === "Payment Reform") {
           const paymentReform = d3.select('.payment-reform').select('ul');
           paymentReform.selectAll('li').remove();
-          d3.select('.payment-reform-state').text(selectedState);
+          d3.selectAll('.payment-reform-text').hide();
+          let totalYes = 0;
           for (const key in allData.get(selectedPolicy).get(selectedState)) {
             if(key !== "State") {
               if(allData.get(selectedPolicy).get(selectedState)[key] === 'Yes') {
+                totalYes += 1;
                 paymentReform.append('li').text(key.replace(/_/g, " "));
               }
             }
+          }
+          d3.selectAll('.payment-reform-state').text(selectedState);
+          if(totalYes > 0) {
+            d3.select('.yes-payment-reform').show();
+          }
+          else {
+            d3.select('.no-payment-reform').show();
           }
           d3.select('.payment-reform').showFlex();
         }

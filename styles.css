@@ -50,6 +50,8 @@ a:hover {
   margin: 0 auto;
   max-width: 1280px;
   padding: 20px;
+  display: none;
+  flex-direction: column;
 }
 
 .map-top-container {
