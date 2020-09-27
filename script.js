@@ -81,7 +81,6 @@
       .attr('height', height + margin.top + margin.bottom)
       .call(responsive);
 
-  const contestantMap = d3.map();
   const stateNames = d3.map();
   const stateActions = d3.map();
   const policyDesc = d3.map();
@@ -116,8 +115,6 @@
     .attr("dy", ".35em")
     .text("DC");
 
-  // d3.select(".body-container").hide();
-
   window.onclick = function(event) {
     let isDetail = false;
     for(var i=0;i<event.path.length;i++) {
@@ -142,9 +139,6 @@
     d3.json("https://script.google.com/macros/s/AKfycbztXNRRF5eMOTeYlS6JNDf2DQlqD5rOho6hiECD9sVGMrQnDeA/exec?id=1nik6jVxBoGdvrOtfnbCgfiXejeYdBMYQWCjTKbYwZwo"),
     d3.tsv("../data/state-names.tsv", d => {
       stateNames.set(d.id, d.name);
-    }),
-    d3.csv("../data/state-by-contestants.csv", d => {
-      contestantMap.set(d.name, { proportion: +d.proportion, percentage: +d.percentage, population: d.population, contestants: d.contestants });
     })
   ];
   
@@ -174,7 +168,9 @@
         description: d["Description"],
         yes: d["Yes"],
         no: d["No"],
-        notes: d["Notes"]
+        notes: d["Notes"],
+        yes2: d["Yes2"],
+        no2: d["No2"]
       });
     });
     for (const key in fullData) {
@@ -341,7 +337,6 @@
     }
 
     function getColor(action) {
-      ["#d5d2d1", "#9bdddd", "#1894ac", "#02578c"]
       if(type === 'default') {
         if(action < 10) {
           return "#d3f4f4";
@@ -485,7 +480,16 @@
         d3.select(".default-no-state").showFlex();
       }
       if(policyDesc.get(selectedPolicy)["notes"] !== "") {
-        d3.select(".the-notes").text(policyDesc.get(selectedPolicy)["notes"]);
+        const splitNotes = policyDesc.get(selectedPolicy)["notes"].split(/\d+\.\s/);
+        const notesContainer = d3.select(".the-notes");
+        notesContainer.selectAll('p').remove();
+        splitNotes.forEach((n, i) => {
+          if(n !== "") {
+            notesContainer
+              .append('p')
+              .text(`${i}. ${n}`);
+          }
+        });
         d3.select(".notes-container").showFlex();
       }
     }

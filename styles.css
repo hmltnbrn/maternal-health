@@ -223,6 +223,20 @@ h2.state-name {
   display: none;
 }
 
+@media (max-width: 768px) {
+  .map-top-container {
+    flex-direction: column;
+  }
+  
+  .map-container {
+    width: 100%;
+  }
+  
+  .detail-container {
+    width: 100%;
+  }
+}
+
 /* Spinner */
 
 .loading-container {
