@@ -63,6 +63,22 @@ a:hover {
   width: 60%;
 }
 
+.map-container button {
+  font-family: InterfaceBold;
+  font-size: 15px;
+  background: #02578c;
+  color: #ffffff;
+  padding: 10px 20px;
+  cursor: pointer;
+  z-index: 90;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  margin: 0 auto;
+}
+
 .detail-container {
   display: flex;
   flex-direction: column;
@@ -149,27 +165,24 @@ h2.state-name {
   flex-direction: column;
 }
 
-.payment-reform ul {
+.payment-reform ul,
+.policy-additional ul {
   margin: 5px 0 0 0;
   padding-left: 10px;
-}
-
-.payment-reform ul li {
-  content: "\2022";
-}
-
-.payment-reform ul {
   list-style: none;
   padding-inline-start: 0;
 }
 
-.payment-reform ul li {
+.payment-reform ul li,
+.policy-additional ul li {
+  content: "\2022";
   display: flex;
   margin-bottom: 8px;
   padding-left: 0;
 }
 
-.payment-reform ul li:before {
+.payment-reform ul li:before,
+.policy-additional ul li:before {
   content: "\2022";
   font-size: 100%;
   padding-right: 5px;

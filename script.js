@@ -118,18 +118,15 @@
   window.onclick = function(event) {
     let isDetail = false;
     for(var i=0;i<event.path.length;i++) {
-      if(event.path[i].className === 'detail-container') {
+      if(event.path[i].className === 'detail-container' || event.path[i].className === 'the-notes') {
         isDetail = true;
         break;
       }
     }
     const currentTag = event.target.tagName;
     if(currentTag !== 'path' && currentTag !== 'rect' && currentTag !== 'SELECT' && !isDetail) {
-      selectedPolicy = 'default';
       selectedState = false;
-      d3.select("#health-selector").selectAll("option").attr("selected", null);
-      d3.select("#health-selector").select("option[value='default']").attr("selected", true);
-      createMap(usMap, stateActions, 'default');
+      createMap(usMap, selectedPolicy === 'default' ? stateActions : allData.get(selectedPolicy), selectedPolicy);
       setTextBoxes();
     }
   }
@@ -152,6 +149,17 @@
       selectedState = false;
     }
     createMap(usMap, selectedPolicy === 'default' ? stateActions : allData.get(selectedPolicy), selectedPolicy);
+    setTextBoxes();
+  });
+
+  var toDefault = document.getElementById("to-default");
+
+  toDefault.addEventListener("click", function(e) {
+    selectedPolicy = 'default';
+    selectedState = false;
+    d3.select("#health-selector").selectAll("option").attr("selected", null);
+    d3.select("#health-selector").select("option[value='default']").attr("selected", true);
+    createMap(usMap, stateActions, 'default');
     setTextBoxes();
   });
   
@@ -444,6 +452,8 @@
         else {
           const policyVals = d3.select(".policy-values");
           policyVals.selectAll('p').remove();
+          const policyAdd = d3.select(".additional-info-list");
+          policyAdd.selectAll('li').remove();
           for (const key in allData.get(selectedPolicy).get(selectedState)) {
             if(key.indexOf("Value") >= 0) {
               const keyName = allData.get(selectedPolicy).get(selectedState)[key].trim() + key.replace("Value", "");
@@ -465,11 +475,13 @@
                 d3.select(".effective-date").text(date.isValid() ? date.format('MMMM Do, YYYY') : effText);
               }
             }
-            if(key === 'Additional_Information') {
+            if(key.indexOf("Additional_Information") >= 0) {
               const aiText = allData.get(selectedPolicy).get(selectedState)[key];
               if(aiText !== "") {
                 d3.select(".policy-additional").showFlex();
-                d3.select(".additional-info").text(aiText);
+                policyAdd
+                  .append('li')
+                  .html(`<p>${aiText}</p>`);
               }
             }
           }
