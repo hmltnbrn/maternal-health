@@ -164,7 +164,7 @@
   });
   
   function createAll([us, fullData]) {
-    console.log(fullData)
+    // console.log(fullData)
     usMap = us;
     fullData["State by State Comparison"].forEach(d => {
       stateActions.set(d["State"].trim(), {
@@ -190,9 +190,9 @@
         allData.set(key.trim(), stateMap);
       }
     }
-    console.log(stateActions)
-    console.log(policyDesc)
-    console.log(allData)
+    // console.log(stateActions)
+    // console.log(policyDesc)
+    // console.log(allData)
     createMap(us, stateActions, 'default');
     d3.select(".body-container").showFlex();
     d3.select(".loading-container").hide();
@@ -454,6 +454,8 @@
           policyVals.selectAll('p').remove();
           const policyAdd = d3.select(".additional-info-list");
           policyAdd.selectAll('li').remove();
+          d3.select(".additional-info").hide();
+          const addInfo = [];
           for (const key in allData.get(selectedPolicy).get(selectedState)) {
             if(key.indexOf("Value") >= 0) {
               const keyName = allData.get(selectedPolicy).get(selectedState)[key].trim() + key.replace("Value", "");
@@ -478,17 +480,29 @@
             if(key.indexOf("Additional_Information") >= 0) {
               const aiText = allData.get(selectedPolicy).get(selectedState)[key];
               if(aiText !== "") {
-                d3.select(".policy-additional").showFlex();
-                policyAdd
-                  .append('li')
-                  .html(`<p>${aiText}</p>`);
+                addInfo.push(aiText);
               }
             }
           }
           policyVals.showFlex();
+          if(addInfo.length === 1) {
+            d3.select(".additional-info")
+              .text(addInfo[0])
+              .showFlex();
+            d3.select(".policy-additional").showFlex();
+          }
+          else if(addInfo.length > 0) {
+            addInfo.forEach(info => {
+              policyAdd
+                .append('li')
+                .html(`<p>${info}</p>`);
+            });
+            d3.select(".policy-additional").showFlex();
+          }
         }
       }
       else {
+        d3.select('.state-name').text("United States");
         d3.select(".default-no-state").showFlex();
       }
       if(policyDesc.get(selectedPolicy)["notes"] !== "") {
