@@ -88,7 +88,7 @@
 
   let usMap = false;
   let selectedState = false;
-  let selectedPolicy = false;
+  let selectedPolicy = 'default';
 
   const path = d3.geoPath();
 
@@ -326,22 +326,20 @@
         .style("alignment-baseline", "middle");
 
     function handleClick(d) {
-      if(type !== 'default') {
-        svg.selectAll("path")
-          .attr("fill-opacity", function(d) {
-            return 0.3;
-          });
-        d3.select(".dc-rect")
-          .attr("fill-opacity", function(d) {
-            return 0.3;
-          });
-        d3.select(this)
-          .attr("fill-opacity", function(d) {
-            return 1;
-          });
-        selectedState = d.state;
-        setTextBoxes();
-      }
+      svg.selectAll("path")
+        .attr("fill-opacity", function(d) {
+          return 0.3;
+        });
+      d3.select(".dc-rect")
+        .attr("fill-opacity", function(d) {
+          return 0.3;
+        });
+      d3.select(this)
+        .attr("fill-opacity", function(d) {
+          return 1;
+        });
+      selectedState = d.state;
+      setTextBoxes();
     }
 
     function getColor(action) {
@@ -418,8 +416,28 @@
     d3.selectAll(".information-level").hide();
     d3.selectAll(".notes-container").hide();
     if(selectedPolicy === 'default') {
-      d3.select(".default-no-action").showFlex();
-      d3.select('.state-name').text("United States");
+      if(selectedState) {
+        d3.select('.state-name').text(selectedState);
+        const allKeys = allData.keys();
+        const policyVals = d3.select(".policy-values");
+        policyVals.selectAll('p').remove();
+        allKeys.forEach(k => {
+          for (const key in allData.get(k).get(selectedState)) {
+            if(key.indexOf("Value") >= 0) {
+              const keyName = allData.get(k).get(selectedState)[key].trim() + key.replace("Value", "");
+              const policyVal = policyDesc.get(k)[keyName.toLowerCase()];
+              policyVals
+                .append('p')
+                .text(policyVal);
+            }
+          }
+        });
+        policyVals.showFlex();
+      }
+      else {
+        d3.select(".default-no-action").showFlex();
+        d3.select('.state-name').text("United States");
+      }
     }
     else {
       d3.select(".policy-description")
