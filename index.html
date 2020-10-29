@@ -29,15 +29,20 @@
   <div class="body-container">
     <div class="map-top-container">
       <div class="map-container">
-        <button name="to-default" id="to-default">Full US View</button>
         <div id="state-chart"></div>
         <div id="legend-container"></div>
       </div>
       <div class="detail-container">
-        <h2 class="state-name">United States</h2>
+        <div class="state-breadcrumb">
+          <div id="to-default" class="full-us">United States</div>
+          <div class="state-name-container">
+            <span class="material-icons">navigate_next</span>
+            <div class="state-name">Illinois</div>
+          </div>
+        </div>
         <div class="styled-select">
           <select id="health-selector">
-            <option value="default" id="default-selection" selected>Select a Maternal Health Equity Measure</option>
+            <option value="default" id="default-selection" selected>Select a Maternal Health Policy Action</option>
             <optgroup label="Coverage and Benefit">
               <option value="COVID-19 Telehealth Benefits">COVID-19 Telehealth Benefits</option>
               <option value="Postpartum Coverage">Postpartum Coverage</option>
@@ -46,10 +51,10 @@
               <option value="Doula Services">Doula Services</option>
               <option value="Midwifery Services">Midwifery Services</option>
               <option value="Immigrant 5-year Waiver">Immigrant 5-year Waiver</option>
-              <option value="Telemedicine for Pregnancy Care">Telemedicine for Pregnancy Care</option>
+              <option value="Pre COVID-19 Telemedicine for Pregnancy Care">Pre COVID-19 Telemedicine for Pregnancy Care</option>
               <option value="Presumptive Eligibility">Presumptive Eligibility</option>
-              <option value="Targeted Subpopulations">Targeted Subpopulations</option>
-              <option value="Education to Beneficiaries">Education to Beneficiaries</option>
+              <option value="High Risk Subpopulations">High Risk Subpopulations</option>
+              <option value="Education to Enrollees">Education to Enrollees</option>
             </optgroup>
             <optgroup label="Care Delivery Transmission">
               <option value="Models of Care Delivery">Models of Care Delivery</option>

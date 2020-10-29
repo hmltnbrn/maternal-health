@@ -126,7 +126,10 @@
     const currentTag = event.target.tagName;
     if(currentTag !== 'path' && currentTag !== 'rect' && currentTag !== 'SELECT' && !isDetail) {
       selectedState = false;
-      createMap(usMap, selectedPolicy === 'default' ? stateActions : allData.get(selectedPolicy), selectedPolicy);
+      selectedPolicy = 'default';
+      d3.select("#health-selector").selectAll("option").attr("selected", null);
+      d3.select("#health-selector").select("option[value='default']").attr("selected", true);
+      createMap(usMap, stateActions, 'default');
       setTextBoxes();
     }
   }
@@ -155,11 +158,8 @@
   var toDefault = document.getElementById("to-default");
 
   toDefault.addEventListener("click", function(e) {
-    selectedPolicy = 'default';
     selectedState = false;
-    d3.select("#health-selector").selectAll("option").attr("selected", null);
-    d3.select("#health-selector").select("option[value='default']").attr("selected", true);
-    createMap(usMap, stateActions, 'default');
+    createMap(usMap, selectedPolicy === 'default' ? stateActions : allData.get(selectedPolicy), selectedPolicy);
     setTextBoxes();
   });
   
@@ -385,19 +385,19 @@
       let legendData, legendCol;
       if(type === 'default') {
         legendData = [
-          "State has taken fewer than 10 actions to improve maternal health conditions",
-          "State has taken 10-15 actions to improve maternal health conditions",
-          "State has taken 16-20 actions to improve maternal health conditions",
-          "State has taken more than 20 actions to improve maternal health conditions"
+          "State has taken fewer than 10 actions to improve maternal health outcomes",
+          "State has taken 10-15 actions to improve maternal health outcomes",
+          "State has taken 16-20 actions to improve maternal health outcomes",
+          "State has taken more than 20 actions to improve maternal health outcomes"
         ];
         legendCol = ["#d3f4f4", "#9bdddd", "#1894ac", "#02578c"];
       }
       else if(type === 'Payment Reform') {
         legendData = [
           "Has not implemented any payment reform actions",
-          "Implemented 1 payment reform action",
-          "Implemented 2 payment reform actions",
-          "Implemented 2 payment reform actions"
+          "Implemented 1 out of 6 payment reform action",
+          "Implemented 2 out of 6 payment reform actions",
+          "Implemented 3 out of 6 payment reform actions"
         ];
         legendCol = ["#d5d2d1", "#9bdddd", "#1894ac", "#02578c"];
       }
@@ -417,7 +417,9 @@
     d3.selectAll(".notes-container").hide();
     if(selectedPolicy === 'default') {
       if(selectedState) {
+        d3.select('.full-us').classed('not-selected', true);
         d3.select('.state-name').text(selectedState);
+        d3.select(".state-name-container").showFlex();
         const allKeys = allData.keys();
         const policyVals = d3.select(".policy-values");
         policyVals.selectAll('p').remove();
@@ -435,8 +437,9 @@
         policyVals.showFlex();
       }
       else {
+        d3.select('.full-us').classed('not-selected', false);
         d3.select(".default-no-action").showFlex();
-        d3.select('.state-name').text("United States");
+        d3.select(".state-name-container").hide();
       }
     }
     else {
@@ -444,7 +447,9 @@
         .text(policyDesc.get(selectedPolicy)["description"])
         .showFlex();
       if(selectedState) {
+        d3.select('.full-us').classed('not-selected', true);
         d3.select('.state-name').text(selectedState);
+        d3.select(".state-name-container").showFlex();
         if(selectedPolicy === "Payment Reform") {
           const paymentReform = d3.select('.payment-reform').select('ul');
           paymentReform.selectAll('li').remove();
@@ -520,7 +525,8 @@
         }
       }
       else {
-        d3.select('.state-name').text("United States");
+        d3.select('.full-us').classed('not-selected', false);
+        d3.select(".state-name-container").hide();
         d3.select(".default-no-state").showFlex();
       }
       if(policyDesc.get(selectedPolicy)["notes"] !== "") {

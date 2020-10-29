@@ -100,9 +100,31 @@ a:hover {
   padding: 20px 10px;
 }
 
-h2.state-name {
+.state-breadcrumb {
   font-family: InterfaceBold;
   color: #f47a24;
+  font-size: 23px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.full-us {
+  cursor: pointer;
+}
+
+.full-us.not-selected {
+  opacity: 0.5;
+}
+
+.state-name-container {
+  display: none;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
 }
 
 .styled-select {
