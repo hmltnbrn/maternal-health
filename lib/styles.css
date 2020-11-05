@@ -110,6 +110,7 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  line-height: normal;
 }
 
 .full-us {
@@ -160,7 +161,7 @@ a:hover {
   font-family: InterfaceBold;
   color: #5a5e67;
   padding: 0 15px;
-  margin-top: 20px;
+  margin-top: 13px;
 }
 
 .policy-description {
@@ -183,7 +184,12 @@ a:hover {
 }
 
 .policy-values p {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.policy-values p.cat-name {
+  font-weight: 700;
+  margin-top: 10px;
 }
 
 .policy-additional,

@@ -90,6 +90,8 @@
   let selectedState = false;
   let selectedPolicy = 'default';
 
+  const polCategories = ["Coverage and Benefits", "Care Delivery Transmission", "Data and Oversight"];
+
   const path = d3.geoPath();
 
   const states = svg.append("g")
@@ -117,8 +119,14 @@
 
   window.onclick = function(event) {
     let isDetail = false;
+    const detailClasses = [
+      "state-breadcrumb",
+      "styled-select",
+      "information-container",
+      "the-notes"
+    ];
     for(var i=0;i<event.path.length;i++) {
-      if(event.path[i].className === 'detail-container' || event.path[i].className === 'the-notes') {
+      if(detailClasses.indexOf(event.path[i].className) >= 0) {
         isDetail = true;
         break;
       }
@@ -174,6 +182,7 @@
     fullData["Policy Descriptions"].forEach(d => {
       policyDesc.set(d["Policy"].trim(), {
         description: d["Description"],
+        category: d["Category"],
         yes: d["Yes"],
         no: d["No"],
         notes: d["Notes"],
@@ -423,16 +432,29 @@
         const allKeys = allData.keys();
         const policyVals = d3.select(".policy-values");
         policyVals.selectAll('p').remove();
+        const policyList = {};
         allKeys.forEach(k => {
           for (const key in allData.get(k).get(selectedState)) {
             if(key.indexOf("Value") >= 0) {
               const keyName = allData.get(k).get(selectedState)[key].trim() + key.replace("Value", "");
               const policyVal = policyDesc.get(k)[keyName.toLowerCase()];
-              policyVals
-                .append('p')
-                .text(policyVal);
+              const policyCat = policyDesc.get(k)["category"];
+              if(policyVal) {
+                policyList[policyCat] = [policyVal, ...policyList[policyCat] ? policyList[policyCat] : []];
+              }
             }
           }
+        });
+        polCategories.forEach(c => {
+          policyVals
+            .append('p')
+            .attr('class', 'cat-name')
+            .text(c);
+          policyList[c].forEach(p => {
+            policyVals
+              .append('p')
+              .text(p);
+          });
         });
         policyVals.showFlex();
       }
