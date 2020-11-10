@@ -159,11 +159,11 @@ a:hover {
 }
 
 .policy-values p {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .policy-values p.cat-name {
-  font-weight: 700;
+  font-family: InterfaceBold;
   margin-top: 10px;
 }
 
