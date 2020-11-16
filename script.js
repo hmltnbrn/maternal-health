@@ -314,7 +314,7 @@
 
     legendCircle.enter()
       .append("circle")
-        .attr("cx", 100)
+        .attr("cx", 25)
         .attr("cy", (d,i) => { return 40 + i*35; })
         .attr("r", 7)
         .merge(legendCircle)
@@ -327,7 +327,7 @@
 
     legendText.enter()
       .append("text")
-        .attr("x", 120)
+        .attr("x", 45)
         .attr("y", (d,i) => { return 40 + i*35; })
         .merge(legendText)
         .text(d => d)

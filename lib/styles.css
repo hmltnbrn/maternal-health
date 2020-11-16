@@ -156,6 +156,10 @@ a:hover {
   font-family: InterfaceRegular;
 }
 
+.information-container {
+  font-size: 15px;
+}
+
 .default-no-action,
 .default-no-state {
   font-family: InterfaceBold;
@@ -250,7 +254,7 @@ a:hover {
 
 #state-chart,
 #legend-container {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .state-container {
